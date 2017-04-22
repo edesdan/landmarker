@@ -15,8 +15,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 
-import com.google.creativelabs.androidexperiments.typecompass.R;
 import com.androidexperiments.landmarker.data.NearbyPlace;
+import com.google.creativelabs.androidexperiments.typecompass.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,6 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import de.greenrobot.event.EventBus;
-import se.walkercrou.places.Place;
 
 /**
  * Handles 4 textviews and displays them in NSEW orientation
@@ -180,7 +179,7 @@ public class DirectionalTextViewContainer extends FrameLayout
             return mSouth;
     }
 
-    public void updatePlaces(List<Place> places, Location lastLocation)
+    public void updatePlaces(List<NearbyPlace> places, Location lastLocation)
     {
         //wipe old places
         mNorthernPlaces = new ArrayList<>();
@@ -188,7 +187,7 @@ public class DirectionalTextViewContainer extends FrameLayout
         mSouthernPlaces = new ArrayList<>();
         mWesternPlaces = new ArrayList<>();
 
-        for(Place place : places)
+        for(NearbyPlace place : places)
         {
             Location placeLoc = new Location("placeLoc");
             placeLoc.setLatitude(place.getLatitude());
@@ -197,19 +196,18 @@ public class DirectionalTextViewContainer extends FrameLayout
 //            Log.d(TAG, "degrees to " + place.getName() + ": " + lastLocation.bearingTo(placeLoc) + " distance: " + lastLocation.distanceTo(placeLoc));
 
             float bearing = lastLocation.bearingTo(placeLoc);
-            float distance = lastLocation.distanceTo(placeLoc);
+            // float distance = lastLocation.distanceTo(placeLoc); already calculated
 
-            NearbyPlace newPlace = new NearbyPlace(distance, place.getName());
 
             //simple but useful
             if(bearing > -45.f && bearing < 45.f) // north
-                mNorthernPlaces.add(newPlace);
+                mNorthernPlaces.add(place);
             else if(bearing > 45.f && bearing < 135.f) // east
-                mEasternPlaces.add(newPlace);
+                mEasternPlaces.add(place);
             else if(bearing < -45.f && bearing > -135.f) // west
-                mWesternPlaces.add(newPlace);
+                mWesternPlaces.add(place);
             else
-                mSouthernPlaces.add(newPlace);
+                mSouthernPlaces.add(place);
         }
 
         mNorth.setPlaces(mNorthernPlaces);

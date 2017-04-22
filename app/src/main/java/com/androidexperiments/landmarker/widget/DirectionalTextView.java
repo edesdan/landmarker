@@ -10,8 +10,8 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.google.creativelabs.androidexperiments.typecompass.R;
 import com.androidexperiments.landmarker.data.NearbyPlace;
+import com.google.creativelabs.androidexperiments.typecompass.R;
 
 import java.util.ArrayList;
 
@@ -154,7 +154,7 @@ public class DirectionalTextView extends FrameLayout
         mCurrentPlace = place;
 
         this.setText(place.getName());
-        this.setDistance(place.getDistance());
+        this.setDistance((float) place.getDistance());
     }
 
     public void setText(String name)
