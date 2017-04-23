@@ -1,25 +1,21 @@
 Landmarker
 =========
 
-Landmarker turns your orientation into an interface, revealing key destinations around you. Click each result to get directions.
+Landmarker turns your orientation into an interface, revealing key destinations around you. Click each result to get a brief description and directions. Turns around your phone to check what's nearby you.
 
-Written by [Anthony Tripaldi](https://github.com/trippedout) for Google Creative Lab.
+Originally Written by [Anthony Tripaldi](https://github.com/trippedout) for Google Creative Lab.
 
-Download it in the [Play Store](https://play.google.com/store/apps/details?id=com.androidexperiments.landmarker)
+Download it in the [Play Store](https://play.google.com/store/apps/details?id=com.edesdan.landmarker)
 
 More Info
 ---------
 
-Check out more [Android Experiments](http://www.androidexperiments.com) and submit your own experiment!
-
-Report any issues [here](https://github.com/googlecreativelab/landmarker/issues) - we love pull requests!
+Report any issues [here](https://github.com/edesdan/landmarker/issues) - we love pull requests!
 
 License
 -------
 
 ```
-Copyright 2015 Google Inc.
-
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
