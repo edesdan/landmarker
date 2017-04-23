@@ -9,6 +9,8 @@ android {
         targetSdkVersion 25
         versionCode 3
         versionName "1.0.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -25,6 +27,12 @@ android {
     packagingOptions {
         exclude 'LICENSE.txt'
     }
+
+
+    sourceSets {
+//        org.gradle.api.tasks.testing.Test.setRoot('src/test') // for Unit Test
+        androidTest.setRoot('src/androidTest') // for Android Instrumentation Test
+    }
 }
 
 dependencies {
@@ -38,4 +46,7 @@ dependencies {
     compile 'org.apache.httpcomponents:httpclient-android:4.3.5.1' // needed by ^*/
     compile 'uk.co.chrisjenx:calligraphy:2.1.0'    //simple custom fonts
     compile 'de.greenrobot:eventbus:2.4.0'    //simple event bus
+    compile 'com.google.code.gson:gson:2.7'
+
+    testCompile 'junit:junit:4.12'
 }

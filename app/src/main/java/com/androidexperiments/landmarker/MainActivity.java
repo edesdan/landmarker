@@ -1,7 +1,6 @@
 package com.androidexperiments.landmarker;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
@@ -18,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidexperiments.landmarker.data.NearbyPlace;
@@ -26,11 +26,11 @@ import com.androidexperiments.landmarker.util.HeadTransform;
 import com.androidexperiments.landmarker.widget.DirectionalTextViewContainer;
 import com.androidexperiments.landmarker.widget.IntroView;
 import com.androidexperiments.landmarker.widget.SwingPhoneView;
-import com.androidexperiments.landmarker.wikipedia.client.boundary.WikipediaConnectionException;
-import com.androidexperiments.landmarker.wikipedia.client.boundary.WikipediaService;
-import com.androidexperiments.landmarker.wikipedia.client.control.WikipediaClient;
-import com.androidexperiments.landmarker.wikipedia.client.entity.ClientConfig;
-import com.androidexperiments.landmarker.wikipedia.client.entity.WikipediaPlace;
+import com.androidexperiments.landmarker.wikipedia.boundary.WikipediaService;
+import com.androidexperiments.landmarker.wikipedia.control.WikipediaClient;
+import com.androidexperiments.landmarker.wikipedia.control.WikipediaConnectionException;
+import com.androidexperiments.landmarker.wikipedia.entity.ClientConfig;
+import com.androidexperiments.landmarker.wikipedia.entity.WikipediaPlace;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -95,6 +95,8 @@ public class MainActivity extends BaseActivity implements
     DirectionalTextViewContainer mDirectionalTextViewContainer;
     @InjectView(R.id.maps_button_view_container)
     View mMapsButtonViewContainer;
+    @InjectView(R.id.place_description)
+    TextView mPlaceDescriptionView;
 
     private NearbyPlace mCurrentPlace;
 
@@ -211,7 +213,7 @@ public class MainActivity extends BaseActivity implements
 
     //butterknife
 
-    @OnClick(R.id.maps_button_view)
+    @OnClick(R.id.map_icon)
     public void onMapsButtonClick() {
         if (mCurrentPlace == null) {
             Log.w(TAG, "No currentPlace available - must be empty. Ignore click.");
@@ -317,6 +319,7 @@ public class MainActivity extends BaseActivity implements
 
     private void showMapsButtonView() {
         mMapsButtonViewContainer.setVisibility(View.VISIBLE);
+        mPlaceDescriptionView.setText(mCurrentPlace.getDescription());
         Animation anim = new AlphaAnimation(0.f, 1.f);
         anim.setDuration(300);
         mMapsButtonViewContainer.startAnimation(anim);
@@ -324,6 +327,7 @@ public class MainActivity extends BaseActivity implements
 
     private void hideMapsButtonView() {
         mMapsButtonViewContainer.setVisibility(View.GONE);
+        mPlaceDescriptionView.setText("");
         Animation anim = new AlphaAnimation(1.f, 0.f);
         anim.setDuration(300);
         mMapsButtonViewContainer.startAnimation(anim);
@@ -609,12 +613,11 @@ public class MainActivity extends BaseActivity implements
                 //TODO return a different object? Some object that could contain a response code/boolean flag?
             }
 
-            return new ArrayList<>();
+            return null;
 
         }
 
 
-        @SuppressLint("SetTextI18n")
         @Override
         protected void onPostExecute(List<WikipediaPlace> places) {
             Log.d(TAG, "--> onPostExecute.");
