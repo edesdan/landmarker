@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.androidexperiments.landmarker.widget.IntroView
+<com.edesdan.landmarker.widget.IntroView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -41,4 +41,4 @@
     </RelativeLayout>
 
 
-</com.androidexperiments.landmarker.widget.IntroView>
+</com.edesdan.landmarker.widget.IntroView>

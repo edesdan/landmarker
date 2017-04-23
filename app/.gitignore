@@ -1,5 +1,5 @@
 /build
-src/main/java/com/androidexperiments/landmarker/Secrets.java
+src/main/java/com/edesdan/landmarker/Secrets.java
 
 # User-specific stuff:
 .idea/
