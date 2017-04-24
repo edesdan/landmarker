@@ -77,7 +77,7 @@
                 android:layout_below="@id/map_icon"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="12dp"
-                android:text="Tap the icon to Open in Google Maps"
+                android:text="@string/open_in_google_maps_text"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
 

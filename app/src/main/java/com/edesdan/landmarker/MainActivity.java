@@ -319,7 +319,7 @@ public class MainActivity extends BaseActivity implements
 
     private void showMapsButtonView() {
         mMapsButtonViewContainer.setVisibility(View.VISIBLE);
-        mPlaceDescriptionView.setText(mCurrentPlace.getDescription());
+        mPlaceDescriptionView.setText(mCurrentPlace.getDescription() + "\n\n");
         Animation anim = new AlphaAnimation(0.f, 1.f);
         anim.setDuration(300);
         mMapsButtonViewContainer.startAnimation(anim);
