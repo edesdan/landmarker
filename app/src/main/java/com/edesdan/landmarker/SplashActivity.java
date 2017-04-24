@@ -4,12 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.answers.Answers;
+import com.crashlytics.android.answers.BuildConfig;
 import com.edesdan.landmarker.widget.InfoView;
 import com.google.creativelabs.androidexperiments.typecompass.R;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Splash shit
@@ -23,6 +27,9 @@ public class SplashActivity extends BaseActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (!BuildConfig.DEBUG && !Fabric.isInitialized()) {
+            Fabric.with(this, new Answers(), new Crashlytics());
+        }
         this.setContentView(R.layout.activity_splash);
 
         ButterKnife.inject(this);
