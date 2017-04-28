@@ -6,7 +6,6 @@ Landmarker turns your orientation into an interface, revealing key destinations 
 
 Originally Written by [Anthony Tripaldi](https://github.com/trippedout) for Google Creative Lab.
 
-Download it in the [Play Store](https://play.google.com/store/apps/details?id=com.edesdan.landmarker)
 
 More Info
 ---------
